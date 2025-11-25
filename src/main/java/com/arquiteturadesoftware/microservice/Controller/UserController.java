@@ -1,7 +1,7 @@
 package com.arquiteturadesoftware.microservice.Controller;
 
 import com.arquiteturadesoftware.microservice.Model.User;
-import com.arquiteturadesoftware.microservice.UserService;
+import com.arquiteturadesoftware.microservice.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
