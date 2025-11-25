@@ -1,7 +1,8 @@
 package com.arquiteturadesoftware.microservice.Controller;
 
 import com.arquiteturadesoftware.microservice.Model.User;
-import com.arquiteturadesoftware.microservice.Repository.UserRepository;
+import com.arquiteturadesoftware.microservice.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,19 +12,16 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
 
-    private final UserRepository repository;
-
-    public UserController(UserRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private UserService userService;
 
     @PostMapping(path = "/save")
     public User create(@RequestBody User user) {
-        return repository.save(user);
+        return userService.save(user);
     }
 
     @GetMapping(path = "/buscar")
     public ResponseEntity<List<User>> list() {
-        return ResponseEntity.ok(repository.findAll());
+        return ResponseEntity.ok(userService.findAll());
     }
 }
